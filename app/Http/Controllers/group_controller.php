@@ -3,28 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\groups_model;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class group_controller extends Controller
 {
     //
 
-    public function savegroup(Request $request){
-       
-        {
-            // Validate request
-            $validated = $request->validate([
-                'gid' =>'required|string|max:50|unique:cgroups,gid',   // <-- FIX TABLE NAME
+
+    public function savegroup (Request $request){
+
+
+        $validator = Validator::make($request->all(), [
+                'gid' =>'required|string|max:50|unique:cgroups,gid',   
                 'gname' =>'required|string|max:255',
-            ]);
+
+          ],
+          [
+              // This has our own custom error messages for each validation
+              "gid.required" => "Group ID is required",
+              "gname.required" => "Group Name  is required"
+              
+            
+               ]);
     
+          if ($validator->fails()) {
+              return response(['errors'=>$validator->errors()->all()], 422);
+          }
+            
             // Insert
             $insert = new groups_model();
-            $insert->gid = $validated['gid'];
-            $insert->gname = $validated['gname']; // <-- FIXED
+            $insert->gid = $request->gid;
+            $insert->gname = $request->gname;
             
-    
-    
             $insert -> save();
     
             return response()->json([
@@ -34,14 +45,12 @@ class group_controller extends Controller
         }
 
 
-
-       
-    }
+ 
 
 
      //function to get all group list
      public function allgroups(){
-        $allgroups = groups_model::all();
+        $allgroups = groups_model::paginate(10);
         return response()->json([
             "okay" => true,
             "msg" => "success",

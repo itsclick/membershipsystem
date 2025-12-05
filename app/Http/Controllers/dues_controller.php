@@ -4,32 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\dues_model;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class dues_controller extends Controller
 {
     //
 
     public function savedues (Request $request){
 
-        
-            // Validate request
-            $validated = $request->validate([
-                'did' =>'required|string|max:50|unique:mdues,did',   
-                'mid' =>'required|string|max:255',
-                'gid' =>'required|string|max:255',
-                'amt' =>'required|string|max:255',
-                'pdate' =>'required|string|max:255',
-                'pmonth' =>'required|string|max:255',
-            ]);
+
+        $validator = Validator::make($request->all(), [
+            'did' => 'required|string|max:50|unique:mdues,did',
+            'mid' => 'required|string|max:255',
+            'gid' => 'required|string|max:255',
+            'amt' => 'required|numeric',
+            'pdate' => 'required|date',
+            'pmonth' => 'required|string|max:255',
+
+          ],[
+              // This has our own custom error messages for each validation
+              "did.required" => "Dues ID is required",
+              "mid.required" => "Members ID is required",
+              "gid.required" => "Group ID is required",
+              "amt.required" => "Amount is required",
+              "pdate.required" => "Payment Date is required",
+              "pmonth.required" => "Payment Month is required"
+            
+               ]);
     
+          if ($validator->fails()) {
+              return response(['errors'=>$validator->errors()->all()], 422);
+          }
+            
             // Insert
             $insert = new dues_model();
-            $insert->did = $validated['did'];
-            $insert->mid = $validated['mid']; 
-            $insert->gid = $validated['gid'];
-            $insert->amt = $validated['amt'];
-            $insert->pdate = $validated['pdate'];
-            $insert->pmonth = $validated['pmonth'];
+            $insert->did = $request->did;
+            $insert->mid = $request->mid;
+            $insert->gid = $request->gid;
+            $insert->amt =$request->amt;
+            $insert->pdate = $request->pdate;
+            $insert->pmonth = $request->pmonth;
             
     
     
@@ -40,21 +53,23 @@ class dues_controller extends Controller
                 "msg" => "Dues Records Saved successfully"
             ]);
         }
+    
 
 
 
         //function to get all dues
 
         public function getalldues(){
-            $alldues = dues_model::all();
+            $alldues = dues_model::paginate(10);
 
             return response () -> json([
                 "okay" =>true,
                 "msg"=>"Success",
-                "data" => $alldues
+                "duesdata" => $alldues
             ]);
         }
 
+       
          //get due by ID. This can be used for dues payment receipt
         public function duesbyid($id){
             $getduebyid = dues_model::find($id);
@@ -99,7 +114,7 @@ class dues_controller extends Controller
         }
             // update member dues
             public function updateddues (Request $request, $id){
-                $updatedues = dues_model::where($id);
+                $updatedues = dues_model::find($id);
 
                 if(!$updatedues){
                     return response()->json([
@@ -147,6 +162,6 @@ class dues_controller extends Controller
             }
     
 
-
+        
     }
 

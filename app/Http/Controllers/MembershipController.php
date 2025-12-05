@@ -3,15 +3,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Membership_model;
+use Illuminate\Support\Facades\Validator;
 
 class MembershipController extends Controller
 {
     //
-    public function savemembers(Request $request)
-    {
-        // Validate request
-        $validated = $request->validate([
-            'mid' =>'required|string|max:50|unique:member,mid',   // <-- FIX TABLE NAME
+
+    public function savemembers (Request $request){
+
+
+        $validator = Validator::make($request->all(), [
+            'mid' =>'required|string|max:50|unique:member,mid',  
             'gid' =>'required|string|max:255',
             'fname' =>'required|string|max:255',
             'lname' =>'required|string|max:255',
@@ -20,28 +22,45 @@ class MembershipController extends Controller
             'address' =>'required|string|max:255',
             'gender' => 'required|string|max:10',
 
-        ]);
+          ],[
+              // This has our own custom error messages for each validation
+              "mid.required" => "Member ID is required",
+              "gid.required" => "Group ID is required",
+              "fname.required" => "first Name is required",
+              "lname.required" => "last Name is required",
+              "tele.required" => "telephone Date is required",
+              "email.required" => "email Month is required",
+              "address.required" => "Address is required",
+              "gender.required" => "Gender is required"
+            
+               ]);
+    
+          if ($validator->fails()) {
+              return response(['errors'=>$validator->errors()->all()], 422);
+          }
+            
+            // Insert
+            $insert = new Membership_model();
+            $insert->mid = $request->mid;
+            $insert->gid = $request->gid;
+            $insert->fname = $request->fname;
+            $insert->lname =$request->lname;
+            $insert->tele = $request->tele;
+            $insert->email = $request->email;
+            $insert->address = $request->address;
+            $insert->gender = $request->gender;
+            
+    
+    
+            $insert -> save();
+    
+            return response()->json([
+                "okay" => true,
+                "msg" => "Members Records Saved successfully"
+            ]);
+        }
 
-        // Insert
-        $insert = new Membership_model();
-        $insert->mid = $validated['mid'];
-        $insert->gid = $validated['gid']; // <-- FIXED
-        $insert->fname = $validated['fname'];
-        $insert->lname = $validated['lname'];
-        $insert->tele = $validated['tele'];
-        $insert->email = $validated['email'];
-        $insert->address = $validated['address'];
-        $insert->gender = $validated['gender'];
-
-
-        $insert->save();
-
-        return response()->json([
-            "okay" => true,
-            "msg" => "Member Records Saved successfully"
-        ]);
-    }
-
+        
 
     //getallmembers
 

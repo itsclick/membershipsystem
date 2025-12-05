@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('membership')->group(function () {
 
-    Route::post('/savemembers',[MembershipController::class,'savemembers']);
+Route::post('/savemembers',[MembershipController::class,'savemembers']);
 Route::get('/getmembers',[MembershipController::class,'getmembers']);
 Route::get('/memberbyid/{id}',[MembershipController::class,'memberbyid']);
 Route::post('/updatemember/{id}',[MembershipController::class,'updatemember']);
