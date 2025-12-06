@@ -69,7 +69,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useMemberStores } from '../store/members_store';
+import { useMemberStores } from '../../store/members_store';
 
 const router = useRouter();
 const memberStore = useMemberStores();
