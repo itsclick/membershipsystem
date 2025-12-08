@@ -26,6 +26,56 @@ export const useMemberStores = defineStore("memberStore", {
     // ACTIONS
     actions: {
 
+        //pay dues
+        async paddues(id){
+            router.push(`/paddues/${id}`);
+        },
+        
+        //get memberby id
+        async getmemberid(id){
+            try {
+                const response = await axios.get(`/api/membership/memberbyid/${id}`);
+                this.formvalue = response.data.data;
+                
+            } catch (error) {
+                console.error("Error loading dues:", error);
+            }
+        },
+
+        //save membership dues
+
+        async duespayment(fromvalue){
+            try {
+                this.saveloader = true;
+                this.showErrro = false;
+
+                const res = await axios.post(`/api/dues/savedues/`, fromvalue);
+
+                this.saveloader = false;
+
+                toast.fire({
+                    icon: "success",
+                    title: res.data.msg,
+                });
+
+                // Redirect (CORRECT)
+                router.push("/dues");
+
+            } catch (err) {
+                this.saveloader = false;
+                this.showErrro = true;
+
+                this.Erromsg = err.response?.data?.msg || "Failed to save member";
+
+                toast.fire({
+                    icon: "error",
+                    title: this.Erromsg,
+                });
+            }
+        },
+
+        
+
      //function to get all groups in dropdown list
      async getgrouplist() {
         try {
@@ -36,6 +86,8 @@ export const useMemberStores = defineStore("memberStore", {
         }
     },
 
+
+    
         // Fetch all members
 
         async getmembers(page = 1) {

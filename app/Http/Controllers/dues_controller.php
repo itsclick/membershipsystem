@@ -13,7 +13,7 @@ class dues_controller extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            'did' => 'required|string|max:50|unique:mdues,did',
+            
             'mid' => 'required|string|max:255',
             'gid' => 'required|string|max:255',
             'amt' => 'required|numeric',
@@ -22,7 +22,7 @@ class dues_controller extends Controller
 
           ],[
               // This has our own custom error messages for each validation
-              "did.required" => "Dues ID is required",
+              
               "mid.required" => "Members ID is required",
               "gid.required" => "Group ID is required",
               "amt.required" => "Amount is required",

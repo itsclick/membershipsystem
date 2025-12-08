@@ -45,7 +45,7 @@
                                               
 
                                                 
-                                              <td><button type="button" class="badge rounded-pill bg-danger-subtle text-success" @click="padduesbtn(m.id)">Pay dues</button>&nbsp;
+                                              <td><button type="button" class="badge rounded-pill bg-danger-subtle text-success" @click="paddues(m.id)">Pay dues</button>&nbsp;
                                                 <button type="button" class="badge rounded-pill bg-danger-subtle text-warning">Edit</button> &nbsp;
                                                 <button type="button" class="badge rounded-pill bg-danger-subtle text-danger" @click="deletemember(m.id)">Delete</button>
                                             </td>
@@ -98,7 +98,7 @@ import { onMounted } from "vue";
    const { membersmodel ,duesmodelpgin} = storeToRefs(useMemberStores());
 
 //functions below
-const {deletemember,getmembers,padduesbtn } = useMemberStores();
+const {deletemember,getmembers,paddues } = useMemberStores();
 
 
 
@@ -118,7 +118,7 @@ getmembers();
 
 
 
-// PAY DUES BUTTON
+//PAY DUES BUTTON
 // const padduesbtn = (id) => {
 //     router.push('/paddues/' + id);
 // }

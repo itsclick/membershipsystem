@@ -13,6 +13,7 @@ class groups_model extends Model
     protected $primaryKey = 'id';
     const CREATED_AT='cdate';
     const UPDATED_AT='updateddate';
+    
     protected $fillable = [
         'gid',
         'gname',
