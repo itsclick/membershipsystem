@@ -45,8 +45,9 @@
                   <td>{{ m.pdate }}</td>
                   <td>{{ m.pmonth }}</td>
                   <td>
-                    <button type="button" class="btn btn-warning" @click="editdues(m.id)">Edit</button>
-                    <button type="button" class="btn btn-danger" @click="deletedues(m.id)">Delete</button>
+                    
+                    <i class="fas fa-pen fs-16 me-1 " @click="editdues(m.id)" title="Edit"></i>  &nbsp;
+                    <i class="fas fa-trash 16-18 me-1 " @click="deletedues(m.id)" title="Delete"></i> 
                   </td>
                 </tr>
               </tbody>

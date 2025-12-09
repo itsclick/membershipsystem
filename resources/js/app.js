@@ -5,6 +5,7 @@ import App from './App.vue';
 import router from './router';
 import Swal from 'sweetalert2';
 
+
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 
 

@@ -17,6 +17,7 @@
         "@fortawesome/fontawesome-free": "^7.1.0",
         "@fortawesome/free-solid-svg-icons": "^7.1.0",
         "@fortawesome/vue-fontawesome": "^3.1.2",
+        "@lottiefiles/dotlottie-vue": "^0.10.10",
         "bootstrap": "^5.3.8",
         "chart.js": "^4.5.1",
         "laravel-vue-pagination": "^4.1.3",

@@ -45,9 +45,14 @@
                                               
 
                                                 
-                                              <td><button type="button" class="badge rounded-pill bg-danger-subtle text-success" @click="paddues(m.id)">Pay dues</button>&nbsp;
-                                                <button type="button" class="badge rounded-pill bg-danger-subtle text-warning" @click="editmember(m.id)">Edit</button> &nbsp;
-                                                <button type="button" class="badge rounded-pill bg-danger-subtle text-danger" @click="deletemember(m.id)">Delete</button>
+                                              <td>
+                                                <i class="fas fa-wallet fs-16 me-1 " @click="paddues(m.id)" title="Pay dues"></i>&nbsp;
+
+                                                <i class="fas fa-pen fs-16 me-1 " @click="editmember(m.id)" title="Edit"></i>  &nbsp;
+
+                                                <i class="fas fa-trash 16-18 me-1 " @click="deletemember(m.id)" title="Delete"></i> 
+
+                                                
                                             </td>
                                             </tr>
                                             

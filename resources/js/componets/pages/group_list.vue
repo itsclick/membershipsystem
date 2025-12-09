@@ -20,7 +20,7 @@
             <table class="table table-striped mb-0">
               <thead class="table-dark">
                 <tr>
-                  <th>ID</th>
+                  
                   <th>Group ID</th>
                   <th>Group Name</th>
                   <th>Action</th>
@@ -29,13 +29,14 @@
               <tbody>
                 <tr v-for="m in groupmodel" :key="m.id">
                 
-                  <td>{{ m.id }}</td>
+                 
                   <td>{{ m.gid }}</td>
                   <td>{{ m.gname }}</td>
-                  <td>
-                    <button class="btn btn-warning" @click="editgroup(m.id)">Edit</button>
-                    &nbsp;
-                    <button class="btn btn-danger" @click="deletegroup(m.id)">Delete</button>
+                        <td>
+
+                        <i class="fas fa-pen fs-16 me-1 " @click="editgroup(m.id)" title="Edit"></i>  &nbsp;
+
+                        <i class="fas fa-trash 16-18 me-1 " @click="deletegroup(m.id)" title="Delete"></i> 
                   </td>
                 </tr>
               </tbody>

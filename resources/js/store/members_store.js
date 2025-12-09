@@ -2,6 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import router from "@/router"; // Correct global router import
 
+
 export const useMemberStores = defineStore("memberStore", {
     
     // STATE
@@ -68,6 +69,7 @@ export const useMemberStores = defineStore("memberStore", {
 
                 Swal.fire({
                     icon: 'success',
+                    
                     title: res.data.msg,
                     showConfirmButton: false,
                     timer: 3000,
@@ -231,10 +233,21 @@ export const useMemberStores = defineStore("memberStore", {
 
                 this.saveloader = false;
 
-                toast.fire({
-                    icon: "success",
+                Swal.fire({
+                    icon: 'success',
+                    
                     title: res.data.msg,
-                });
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+
+                
 
                 // Redirect (CORRECT)
                 router.push("/members");
@@ -245,10 +258,20 @@ export const useMemberStores = defineStore("memberStore", {
 
                 this.Erromsg = err.response?.data?.msg || "Failed to save member";
 
-                toast.fire({
-                    icon: "error",
+                Swal.fire({
+                    icon: 'error',
+                    
                     title: this.Erromsg,
-                });
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+                
             }
         },
 
@@ -341,10 +364,22 @@ export const useMemberStores = defineStore("memberStore", {
                 if (result.isConfirmed) {
                     axios.delete(`/api/dues/deletedues/${id}`).then((resp) => {
                         if (resp.data.okay) {
-                            toast.fire({ 
-                                icon: "success", 
-                                title: resp.data.msg 
-                            });
+
+                            Swal.fire({
+                                icon: 'success',
+                                
+                                title: resp.data.msg,
+                                showConfirmButton: false,
+                                timer: 3000,
+                                width: '500px',
+                                position: 'center',
+                                customClass: {
+                                  popup: 'swal-wide'
+                                }
+                              });
+
+
+                            
 
                             this.getalldues(); // Refresh list
                         }
@@ -380,10 +415,22 @@ export const useMemberStores = defineStore("memberStore", {
 
                 this.saveloader = false;
 
-                toast.fire({
-                    icon: "success",
+
+                Swal.fire({
+                    icon: 'success',
+                    
                     title: res.data.msg,
-                });
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+
+               
 
                 // Redirect (CORRECT)
                 router.push("/groups");
@@ -394,10 +441,20 @@ export const useMemberStores = defineStore("memberStore", {
 
                 this.Erromsg = err.response?.data?.msg || "Failed to save Group Information";
 
-                toast.fire({
-                    icon: "error",
+                Swal.fire({
+                    icon: 'success',
+                    
                     title: this.Erromsg,
-                });
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+                
             }
         },
 
