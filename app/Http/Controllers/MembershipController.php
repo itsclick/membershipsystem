@@ -97,38 +97,58 @@ class MembershipController extends Controller
     
 }
 
-            //update membership using id
-            public function updatemember(Request $request, $id){
+public function updatemember(Request $request, $id)
+{
+    $member = Membership_model::find($id);
 
-                $updatemember = Membership_model::find($id);
+    if (!$member) {
+        return response()->json([
+            "okay" => false,
+            "msg"  => "No Member found"
+        ], 404);
+    }
 
-                // If no record found
-                if(!$updatemember){
-                    return response()->json([
-                        "okay" => false,
-                        "msg"  => "No Member found",
-                        "data" => null
-                    ], 404);
-                }
+    // ✅ Validation
+    $request->validate([
+        'gid'     => 'required|string|max:255',
+        'fname'   => 'required|string|max:255',
+        'lname'   => 'required|string|max:255',
+        'tele'    => 'required|string|max:255',
+        'email'   => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'gender'  => 'required|string|max:10',
+        'image'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-                // Update fields
-                $updatemember->mid     = $request->mid;
-                $updatemember->gid     = $request->gid;
-                $updatemember->fname   = $request->fname;
-                $updatemember->lname   = $request->lname;
-                $updatemember->tele    = $request->tele;
-                $updatemember->email   = $request->email;
-                $updatemember->address = $request->address;
-                $updatemember->gender  = $request->gender;
+    // ✅ Handle image upload ONLY if a new image is sent
+    if ($request->hasFile('image')) {
 
-                $updatemember->save();
+        
 
-                return response()->json([
-                    "okay" => true,
-                    "msg"  => "Membership Records Updated Successfully",
-                    "data" => $updatemember
-                ]);
-            }
+        $member->image = $request->file('image')
+            ->store('members', 'public');
+    }
+
+    // ✅ Update other fields
+    $member->gid     = $request->gid;
+    $member->fname   = $request->fname;
+    $member->lname   = $request->lname;
+    $member->tele    = $request->tele;
+    $member->email   = $request->email;
+    $member->address = $request->address;
+    $member->gender  = $request->gender;
+
+    // ❌ DO NOT update mid
+
+    $member->save();
+
+    return response()->json([
+        "okay" => true,
+        "msg"  => "Membership record updated successfully",
+        "data" => $member
+    ]);
+}
+
 
 
             //delete membership

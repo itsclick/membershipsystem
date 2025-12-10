@@ -37,10 +37,13 @@
                     </option>
                   </select>
                 </div>
-
-                <div class="mb-3"> 
-                <img :src="`/storage/${formvalue.image}`" class="thumb-xxl rounded-circle"/>
+                <div class="mb-3">
+              <label class="form-label">Member Image</label>
+              <input type="file"  class="form-control" accept="image/*"  @change="onImageChange"/><br>
+              <img :src="`/storage/${formvalue.image}`" class="thumb-xxl rounded-circle"/>
               </div>
+
+                
               </div>
 
              
@@ -109,6 +112,11 @@ const { formvalue,saveloader,showErrro, Erromsg ,getgroups} = storeToRefs(member
 // Actions
 const { getmemberid, updatedmember,getgrouplist } = memberStore;
 
+function onImageChange(e) {
+  formvalue.value.image = e.target.files[0];
+}
+
+
 // Props
 const props = defineProps({
     id: {
@@ -121,10 +129,26 @@ onMounted(() => {
     getmemberid(props.id);
 });
 
-// Save button
+// Update button
 function updatedmemberbtn() {
-    updatedmember(formvalue.value, formvalue.value.id);
+  const formData = new FormData();
+
+  formData.append("fname", formvalue.value.fname);
+  formData.append("lname", formvalue.value.lname);
+  formData.append("gid", formvalue.value.gid);
+  formData.append("tele", formvalue.value.tele);
+  formData.append("email", formvalue.value.email);
+  formData.append("address", formvalue.value.address);
+  formData.append("gender", formvalue.value.gender);
+
+  // ✅ Append image ONLY if user selected a new one
+  if (formvalue.value.image instanceof File) {
+    formData.append("image", formvalue.value.image);
+  }
+
+  updatedmember(formData, formvalue.value.id);
 }
+
 
 
 getgrouplist();
