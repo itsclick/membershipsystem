@@ -39,6 +39,12 @@
                     </option>
                   </select>
                 </div>
+
+                  <div class="mb-3">
+              <label class="form-label">Member Image</label>
+              <input type="file"  class="form-control" accept="image/*"  @change="onImageChange"/>
+              </div>
+
               </div>
 
               <!-- Right Column -->
@@ -70,6 +76,12 @@
                     <option value="Female">Female</option>
                   </select>
                 </div>
+
+                <!-- Member Image -->
+
+
+
+
               </div>
 
             </div>
@@ -116,7 +128,9 @@ import axios from "axios";
  
 
   
-  
+  function onImageChange(e) {
+  memberform.value.image = e.target.files[0];
+}
   
   
   // FORM DATA
@@ -129,6 +143,7 @@ import axios from "axios";
     address: "",
     gender: "",
     gid: "",
+    image:null,
   });
   
   
@@ -142,6 +157,11 @@ formData.append("email", memberform.value.email)
 formData.append("address", memberform.value.address)
 formData.append("gender", memberform.value.gender)
 formData.append("gid", memberform.value.gid)
+
+if (memberform.value.image) {
+    formData.append("image", memberform.value.image)
+  }
+
 savemembers(formData);
   }
   

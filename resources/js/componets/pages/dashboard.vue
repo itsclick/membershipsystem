@@ -165,9 +165,9 @@
 
             <!--end col-->
         </div>
-        <!--end row-->
+        
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div class="card card-h-100">
                     <div class="card-header">
@@ -175,11 +175,11 @@
                             <div class="col">
                                 <h4 class="card-title">Browser Used & Traffic Reports</h4>
                             </div>
-                            <!--end col-->
+                            
                         </div>
-                        <!--end row-->
+                       
                     </div>
-                    <!--end card-header-->
+                   
                     <div class="card-body pt-0">
                         <div class="table-responsive browser_users">
                             <table class="table mb-0">
@@ -190,7 +190,7 @@
                                         <th class="border-top-0">Bounce Rate</th>
                                         <th class="border-top-0">Transactions</th>
                                     </tr>
-                                    <!--end tr-->
+                                  
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -199,7 +199,7 @@
                                         <td> 52.80%</td>
                                         <td>566<small class="text-muted">(92%)</small></td>
                                     </tr>
-                                    <!--end tr-->
+                                    
                                     <tr>
                                         <td>Microsoft
                                             Edge</td>
@@ -207,42 +207,40 @@
                                         <td> 47.54%</td>
                                         <td>498<small class="text-muted">(81%)</small></td>
                                     </tr>
-                                    <!--end tr-->
+                                   
                                     <tr>
                                         <td>Internet-Explorer</td>
                                         <td>1836<small class="text-muted">(38%)</small></td>
                                         <td> 41.12%</td>
                                         <td>455<small class="text-muted">(74%)</small></td>
                                     </tr>
-                                    <!--end tr-->
+                                   
                                     <tr>
                                         <td>Opera</td>
                                         <td>1958<small class="text-muted">(31%)</small></td>
                                         <td> 36.82%</td>
                                         <td>361<small class="text-muted">(61%)</small></td>
                                     </tr>
-                                    <!--end tr-->
+                                    
                                     <tr>
                                         <td>Chrome</td>
                                         <td>10853<small class="text-muted">(52%)</small></td>
                                         <td> 52.80%</td>
                                         <td>566<small class="text-muted">(92%)</small></td>
                                     </tr>
-                                    <!--end tr-->
+                                    
                                 </tbody>
                             </table>
-                            <!--end table-->
+                           
                         </div>
-                        <!--end /div-->
+                       
                     </div>
-                    <!--end card-body-->
+                   
                 </div>
-                <!--end card-->
+             
             </div>
-            <!--end col-->
             
-            <!--end col-->
-        </div>
+        </div> -->
         <!--end row-->
         
         <!--end row-->
@@ -262,14 +260,8 @@
                     <div class="card mb-0 rounded-bottom-0">
                         <div class="card-body">
                             <p class="text-muted mb-0">
-                                ©
-                               
-                                Rizz
-                                <span
-                                    class="text-muted d-none d-sm-inline-block float-end">
-                                    Crafted with
-                                    <i class="iconoir-heart text-danger"></i>
-                                    by Mannatthemes</span>
+                                © Membership Management System
+                                <span class="text-muted d-none d-sm-inline-block float-end"> By Click with for General use</span>
                             </p>
                         </div>
                     </div>

@@ -14,6 +14,9 @@
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/libs/uppy/uppy.min.css') }}">
+
+           
 
 
            
@@ -34,6 +37,12 @@
         <script src="{{ asset('assets/libs/jsvectormap/maps/world.js') }}"></script>
         <script src="{{ asset('assets/libs/chart.js/chart.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/chartjs.init.js') }}"></script>
+        <script src="{{ asset('assets/ibs/uppy/uppy.legacy.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/file-upload.init.js') }}"></script>
+
+
+
+        
 
 
 

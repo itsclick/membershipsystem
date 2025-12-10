@@ -25,6 +25,7 @@ class Membership_model extends Model
         'address',
         'gender',
         'gid',
+        'image',
     ];
 
     /**

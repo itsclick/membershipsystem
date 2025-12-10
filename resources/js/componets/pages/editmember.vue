@@ -37,6 +37,10 @@
                     </option>
                   </select>
                 </div>
+
+                <div class="mb-3"> 
+                <img :src="`/storage/${formvalue.image}`" class="thumb-xxl rounded-circle"/>
+              </div>
               </div>
 
              

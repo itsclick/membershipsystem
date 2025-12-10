@@ -10,56 +10,60 @@ class MembershipController extends Controller
 {
     //
 
-    public function savemembers (Request $request){
+    public function savemembers(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'gid'     => 'required|string|max:255',
+        'fname'   => 'required|string|max:255',
+        'lname'   => 'required|string|max:255',
+        'tele'    => 'required|string|max:255',
+        'email'   => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'gender'  => 'required|string|max:10',
+        'image'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ], [
+        'gid.required'    => 'Group ID is required',
+        'fname.required'  => 'First Name is required',
+        'lname.required'  => 'Last Name is required',
+        'tele.required'   => 'Telephone is required',
+        'email.required'  => 'Email is required',
+        'address.required'=> 'Address is required',
+        'gender.required' => 'Gender is required',
+    ]);
 
+    if ($validator->fails()) {
+        return response()->json([
+            'errors' => $validator->errors()->all()
+        ], 422);
+    }
 
-        $validator = Validator::make($request->all(), [
-            
-            'gid' =>'required|string|max:255',
-            'fname' =>'required|string|max:255',
-            'lname' =>'required|string|max:255',
-            'tele' => 'required|string|max:255',
-            'email' =>'required|string|max:255',
-            'address' =>'required|string|max:255',
-            'gender' => 'required|string|max:10',
+    // ✅ Handle image upload
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')
+            ->store('members', 'public');
+    }
 
-          ],[
-              // This has our own custom error messages for each validation
-              
-              "gid.required" => "Group ID is required",
-              "fname.required" => "first Name is required",
-              "lname.required" => "last Name is required",
-              "tele.required" => "telephone Date is required",
-              "email.required" => "email Month is required",
-              "address.required" => "Address is required",
-              "gender.required" => "Gender is required"
-            
-               ]);
-    
-          if ($validator->fails()) {
-              return response(['errors'=>$validator->errors()->all()], 422);
-          }
-            
-            // Insert
-            $insert = new Membership_model();
-            $insert->mid = $request->mid;
-            $insert->gid = $request->gid;
-            $insert->fname = $request->fname;
-            $insert->lname =$request->lname;
-            $insert->tele = $request->tele;
-            $insert->email = $request->email;
-            $insert->address = $request->address;
-            $insert->gender = $request->gender;
-            
-    
-    
-            $insert -> save();
-    
-            return response()->json([
-                "okay" => true,
-                "msg" => "Members Records Saved successfully"
-            ]);
-        }
+    // ✅ Save member
+    $member = new Membership_model();
+    $member->gid     = $request->gid;
+    $member->fname   = $request->fname;
+    $member->lname   = $request->lname;
+    $member->tele    = $request->tele;
+    $member->email   = $request->email;
+    $member->address = $request->address;
+    $member->gender  = $request->gender;
+    $member->image   = $imagePath; // ✅ save image path
+
+    $member->save();
+
+    return response()->json([
+        'okay' => true,
+        'msg'  => 'Member record saved successfully',
+        'data' => $member
+    ]);
+}
+
 
         
 
