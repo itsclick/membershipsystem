@@ -178,56 +178,7 @@
 
                             
                            
-                            <li class="nav-item">
-                                <router-link to="/members">
-                                    <span class="nav-link" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarElements">
-                                    <i class="iconoir-compact-disc menu-icon"></i>
-                                    <span>Members</span>
-                                    </span>
-                              
-                            </router-link>
-                                
-                                
-                            </li>
-    
-    
-                            <li class="nav-item">
-                                <router-link to="/dues">
-                                    <span class="nav-link" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarElements">
-                                    <i class="iconoir-compact-disc menu-icon"></i>
-                                    <span>Dues</span>
-                                </span>
-                                </router-link>
-                                
-                                
-                            </li>
-    
-    
-                            <li class="nav-item">
-                                <router-link to="/groups">
-                                    <span class="nav-link"  data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarElements">
-                                    <i class="iconoir-compact-disc menu-icon"></i>
-                                    <span>Groups</span>
-                                </span>
-                                </router-link>
-                               
-                                
-                            </li>
-
-                            <li class="nav-item">
-                                <router-link to="/users">
-                                    <span class="nav-link"  data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarElements">
-                                    <i class="iconoir-compact-disc menu-icon"></i>
-                                    <span>Users</span>
-                                </span>
-                                </router-link>
-                               
-                                
-                            </li>
+                          
 
 
 

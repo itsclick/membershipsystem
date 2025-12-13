@@ -18,6 +18,8 @@ import editdues from '../componets/pages/editdues.vue';
 import editgroup from '../componets/pages/editgroup.vue';
 import users from '../componets/pages/users_list.vue';
 import permission from '../componets/pages/permission.vue';
+import menus from '../componets/pages/menu_list.vue';
+import addmenu from '../componets/pages/add_menu.vue'
 
 
 
@@ -28,22 +30,6 @@ import permission from '../componets/pages/permission.vue';
 
 
 
-// import members_list from '../componets/members_list.vue';
-// import dues_list from '../componets/dues_list.vue';
-// import group_list from '../componets/group_list.vue';
-// import stats from '../componets/stats.vue'
-
-
-// 
-// import paddues from '../componets/paydues.vue';
-// 
-// 
-
-
-
-// function routeLoad(view){
-//     return() => import(`../components/${view}.vue`)
-// }statdasboard
 
 
 const routes=[
@@ -67,8 +53,11 @@ const routes=[
         {path:'/editdues/:id',name:'editdues',component:editdues,props:true,meta: { requiresAuth: true}},
         {path:'/editgroup/:id',name:'editgroup',component:editgroup,props:true,meta: { requiresAuth: true}},
         {path:'/users',name:'users',component:users,meta: { requiresAuth: true}},
-
         {path:'/permission/:user_id',name:'permission',component:permission,props:true,meta: { requiresAuth: true}},
+        {path:'/menus',name:'menus',component:menus,meta: { requiresAuth: true}},
+        {path:'/addmenu',name:'addmenu',component:addmenu,meta: { requiresAuth: true}},
+
+
 
 
 
@@ -82,23 +71,6 @@ const routes=[
 
 
 
-
-
-
-
-
-
-    // {path:'/',name:'stats',component:stats,meta: { requiresAuth: true}},
-    // {path:'/login',name:'login',component:login},
-    // {path:'/members',name:'members',component:members_list,meta: { requiresAuth: true}},
-    // {path:'/dues',name:'dues',component:dues_list,meta: { requiresAuth: true}},
-    // 
-    // {path:'/addmember',name:'addmember',component:add_member,meta: { requiresAuth: true}},
-    // 
-    // 
-    // 
-    // {path:'/editdues/:id',name:'editdues',component:editdues,props:true,meta: { requiresAuth: true}},
-    // 
 
     
 

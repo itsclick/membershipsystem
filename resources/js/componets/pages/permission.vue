@@ -8,39 +8,74 @@
 
 
 <div class="card-body pt-0">
-          <div class="table-responsive">
-            <table class="table table-striped mb-0">
-              <thead class="table-dark">
-    <tr>
-        <td>Menu id</td>
-        <td>menu name</td>
-        <td>des</td>
-        <td>Add</td>
-        <td>edit</td>
-        <td>delete</td>
-        <td>Details</td>
-    </tr>
-    </thead>
-    <tr >
-        <td colspan="3"></td>
-        <td><input type="checkbox"  v-model="allAdd"  :true-value="1" :false-value="0" id="allAdd" >  <label for="allAdd">Check All</label></td>
-        <td><input type="checkbox"  v-model="allEdit"  :true-value="1" :false-value="0" id="allEdit" >  <label for="allEdit">Check All</label></td>
-        <td><input type="checkbox"  v-model="allDelete"  :true-value="1" :false-value="0" id="allDelete" >  <label for="allDelete">Check All</label></td>
-        <td><input type="checkbox"  v-model="alldetails"  :true-value="1" :false-value="0" id="alldetails" >  <label for="alldetails">Check All</label></td>
-    </tr>
-    <tr v-for="m in userpermission" :key="m.id">
-        <td>{{ m.menu_id }}</td>
-        <td>{{ m.menu_name }}</td>
-        <td>{{ m.des }}</td>
-        <td><input type='checkbox'    v-model="m.menu_add" :true-value="1" :false-value="0" :id="`1_${m.menu_id}`" class="form-check-input"></td>
-        <td><input type='checkbox'    v-model="m.menu_edit" :true-value="1" :false-value="0" :id="`2_${m.menu_id}`" class="form-check-input"></td>
-        <td><input type='checkbox'    v-model="m.menu_delete" :true-value="1" :false-value="0" :id="`3_${m.menu_id}`" class="form-check-input"></td>
-        <td><input type='checkbox'    v-model="m.menu_details" :true-value="1" :false-value="0" :id="`4_${m.menu_id}`" class="form-check-input"></td>
-    </tr>
-    
-</table>
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      
+      <!-- TABLE HEADER -->
+      <thead class="table-dark">
+        <tr>
+          <th>Menu id</th>
+          <th>Menu name</th>
+          <th>Description</th>
+          <th>Add</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+
+      <!-- TABLE BODY -->
+      <tbody>
+        <!-- CHECK ALL ROW -->
+        <tr>
+          <td colspan="3"></td>
+
+          <td>
+            <input type="checkbox" v-model="allAdd" :true-value="1" :false-value="0" id="allAdd" class="form-check-input"/>  <label for="allAdd">Check All</label>
+          </td>
+
+          <td>
+            <input type="checkbox" v-model="allEdit" :true-value="1" :false-value="0" id="allEdit" class="form-check-input" /> <label for="allEdit">Check All</label>
+          </td>
+
+          <td>
+            <input type="checkbox" v-model="allDelete" :true-value="1" :false-value="0" id="allDelete" class="form-check-input" /> <label for="allDelete">Check All</label>
+          </td>
+
+          <td>
+            <input type="checkbox" v-model="alldetails" :true-value="1" :false-value="0" id="alldetails"  class="form-check-input"/> <label for="alldetails">Check All</label>
+          </td>
+        </tr>
+
+        <!-- PERMISSION ROWS -->
+        <tr v-for="m in userpermission" :key="m.id">
+          <td>{{ m.menu_id }}</td>
+          <td>{{ m.menu_name }}</td>
+          <td>{{ m.des }}</td>
+
+          <td>
+            <input type="checkbox"  v-model="m.menu_add" :true-value="1" :false-value="0"  :id="`1_${m.menu_id}`" class="form-check-input"/>
+          </td>
+
+          <td>
+            <input type="checkbox" v-model="m.menu_edit" :true-value="1" :false-value="0"  :id="`2_${m.menu_id}`" class="form-check-input"/>
+          </td>
+
+          <td>
+            <input type="checkbox"  v-model="m.menu_delete" :true-value="1" :false-value="0" :id="`3_${m.menu_id}`" class="form-check-input"/>
+          </td>
+
+          <td><input type="checkbox" v-model="m.menu_details" :true-value="1" :false-value="0" :id="`4_${m.menu_id}`" class="form-check-input" />
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
 </div>
-</div><br><br>
+
+
+<br><br>
 <div align="right"><button @click="setpermitionbtn" class="btn btn-success">Update </button></div>
 
 

@@ -503,7 +503,8 @@ async updatepermision(fromvalue){
                     }
                 },
 
-        //SAVE GROUPS
+
+                //SAVE GROUPS 
         async savegroup(groupform) {
             try {
                 this.saveloader = true;
@@ -532,6 +533,60 @@ async updatepermision(fromvalue){
 
                 // Redirect (CORRECT)
                 router.push("/groups");
+
+            } catch (err) {
+                this.saveloader = false;
+                this.showErrro = true;
+
+                this.Erromsg = err.response?.data?.msg || "Failed to save Group Information";
+
+                Swal.fire({
+                    icon: 'error',
+                    
+                    title: this.Erromsg,
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+                
+            }
+        },
+
+
+        //SAVE savemenu 
+        async savemenus(groupform) {
+            try {
+                this.saveloader = true;
+                this.showErrro = false;
+
+                const res = await axios.post("/api/users/savemenus", groupform);
+
+                this.saveloader = false;
+
+
+                Swal.fire({
+                    icon: 'success',
+                    
+                    title: res.data.msg,
+                    showConfirmButton: false,
+                    timer: 3000,
+                    width: '500px',
+                    position: 'center',
+                    customClass: {
+                      popup: 'swal-wide'
+                    }
+                  });
+
+
+               
+
+                // Redirect (CORRECT)
+                router.push("/menus");
 
             } catch (err) {
                 this.saveloader = false;
