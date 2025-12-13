@@ -14,6 +14,7 @@ export const useMemberStores = defineStore("memberStore", {
         getgroup:[],
         getallusersmodel:[],
         userpermission:[],
+        sysmenus:[],
         duesid:'',
         formvalue:'',
         getgroups:'',
@@ -36,6 +37,22 @@ export const useMemberStores = defineStore("memberStore", {
 
     // ACTIONS
     actions: {
+
+
+
+         //function to get all system menus
+     async getallsysmenus() {
+        try {
+            const res = await axios.get('/api/users/getallmenus');
+            this.sysmenus = res.data.data // use state property
+        } catch (error) {
+            console.error('Failed to load groups:', error);
+        }
+    },
+    
+
+
+
 
 //get memberby id
 async getuserpermission(user_id) {

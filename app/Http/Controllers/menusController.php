@@ -63,4 +63,17 @@ class menusController extends Controller
                 "msg" => "Dues Records Saved successfully"
             ]);
         }
+
+
+
+          //getll menus
+
+    public function getallmenus(){
+        $getmembers = menus::all();
+        return response()->json([
+            "okay"=>true,
+            "msg"=>"success",
+            "data"=>$getmembers
+        ]);
+    }
 }

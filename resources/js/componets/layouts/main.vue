@@ -47,6 +47,7 @@
                         </li> 
                         <li class="mx-3 welcome-text">
                             <h3 class="mb-0 fw-bold text-truncate">Welcome {{ fullname }}</h3>
+                            
                             <!-- <h6 class="mb-0 fw-normal text-muted text-truncate fs-14">Here's your overview this week.</h6> -->
                         </li>                   
                     </ul>
@@ -153,7 +154,12 @@
                                 </small> -->
                                 <span>Main Menu</span>
                             </li>
+                           
+
+                           
+
                             <li class="nav-item">
+
                                 <router-link to="/dashboard">
                                     <span class="nav-link" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarElements">
@@ -167,7 +173,9 @@
                                 
                                 
                                 
-                            </li><!--end nav-item-->
+                            </li>
+
+
                             
                            
                             <li class="nav-item">
@@ -220,6 +228,18 @@
                                
                                 
                             </li>
+
+
+
+
+                            <li class="nav-item" v-for="menu in sysmenus" :key="menu.id">
+                           <router-link :to="menu.menu_link">
+                                <span class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarElements" >
+                                    <i class="iconoir-home-simple menu-icon"></i>
+                                <span>{{ menu.des }}</span>
+                                </span>
+                            </router-link>
+                            </li>
                             
                             
                            
@@ -252,7 +272,7 @@
                 <div class="container">
     
                 <router-view></router-view>
-    
+               
     
                 </div>
     
@@ -305,11 +325,12 @@
 
 
   //varibale here
-  const { countmembers,countmale,countfemale} = storeToRefs(useMemberStores());
+  const {  sysmenus } =storeToRefs(useMemberStores());
 
 
   //functions below
-  const {  memberstats } = useMemberStores();
+  const {  memberstats ,getallsysmenus} = useMemberStores();
+ 
 
     const router = useRouter();
     
@@ -318,6 +339,7 @@
 
   
     memberstats();
+    getallsysmenus();
 
 function logout(){
 

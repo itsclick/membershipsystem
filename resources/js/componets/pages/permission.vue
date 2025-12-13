@@ -40,9 +40,9 @@
     
 </table>
 </div>
-</div>
+</div><br><br>
+<div align="right"><button @click="setpermitionbtn" class="btn btn-success">Update </button></div>
 
-<button @click="setpermitionbtn" class="btn btn-success">Update Permission</button>
 
 </template>
 
