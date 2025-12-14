@@ -53,6 +53,7 @@ class login_controller extends Controller
             ->join('permission as p', 'm.menu_id', '=', 'p.menu_id')
             ->where('p.user_id', $user->user_id) 
             ->select(
+                'p.user_id',
                 'm.menu_id',
                 'm.menu_name',
                 'm.des',

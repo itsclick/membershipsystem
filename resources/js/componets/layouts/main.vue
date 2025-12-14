@@ -301,7 +301,7 @@
 // Get allowed menus
 const menus = Auth.getMenus();
 
-    const fullname=ref(Auth.user.username)
+const fullname=ref(Auth.user.username)
 
   
     memberstats();
