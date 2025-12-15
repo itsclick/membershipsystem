@@ -7,12 +7,14 @@
               <h4 class="card-title">User's List</h4>
             </div>
   
-            <!-- ✅ Show button only if user has menu_add permission for "users" -->
-            <div class="col text-end" v-if="canAdd">
+            <!--  Show button only if user has menu_add permission for "users" -->
+            <div class="col text-end" v-if="Auth.hasPermission('menu_add')">
               <router-link to="/addgroup">
                 <button type="button" class="btn btn-success">+ Add user</button>
               </router-link>
             </div>
+
+            
   
           </div>
         </div>
@@ -83,10 +85,10 @@
   }
   
   // Computed property to check if "users" menu has menu_add permission
-  const canAdd= computed(() => {
-    const menu = menus.find(m => m.menu_name.toLowerCase() === 'users');
-    return menu ? menu.menu_add === 1 : false;
-  });
+//   const canAdd= computed(() => {
+//     const menu = menus.find(m => m.menu_name.toLowerCase() === 'users');
+//     return menu ? menu.menu_add === 1 : false;
+//   });
   </script>
   
   <style scoped>
