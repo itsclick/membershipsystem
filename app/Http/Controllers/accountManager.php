@@ -131,6 +131,37 @@ public function updatepermission(Request $request){
 }
 
 
+ //function to get permmssion only
+ public function allpermision($user_id)
+ {
+
+    $permissions = DB::table('menus as m')
+    ->join('permission as p', 'm.menu_id', '=', 'p.menu_id')
+    ->where('p.user_id', $user_id) 
+    ->select(
+        'p.user_id',
+        'm.menu_id',
+        'm.menu_name',
+        'm.des',
+        'm.menu_link',
+        'm.menu_icon',
+        'p.menu_add',
+        'p.menu_edit',
+        'p.menu_delete',
+        'p.menu_details'
+    )
+    ->get();
+
+// 7️⃣ Return user data, token, and permissions
+return response()->json([
+    'ok' => true,
+    'permissions' => $permissions
+]);
+
+
+ }
+ 
+
 
 
 

@@ -11,10 +11,13 @@
             <!-- App favicon -->
             <link src="{{ asset('assets/images/favicon.ico') }}" rel="stylesheet">
             <!-- App css -->
-            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+            
             <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('assets/libs/uppy/uppy.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendors.min.css') }}">
+            <link href="{{asset ('assets/plugins/jsvectormap/jsvectormap.min.css') }}"  />
+
+            
+            
 
            
 
@@ -22,23 +25,49 @@
            
             
 
-            <link rel="stylesheet" href="{{ asset('assets/libs/jsvectormap/css/jsvectormap.min.css') }}">
+            
 
            
         <!-- Styles -->
         
-        <script src="{{ asset('assets/js/app.js') }}"></script>
-        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/index.init.js') }}"></script>
-        <script src="{{ asset('assets/data/stock-prices.js') }}"></script>
-        <script src="{{ asset('assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/jsvectormap/maps/world.js') }}"></script>
-        <script src="{{ asset('assets/libs/chart.js/chart.min.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/chartjs.init.js') }}"></script>
-        <script src="{{ asset('assets/ibs/uppy/uppy.legacy.min.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/file-upload.init.js') }}"></script>
+        <script src="{{ asset('assets/js/config.js') }}"></script>
+        <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
+          <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+            <script src="{{ asset('assets/plugins/jsvectormap/jsvectormap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/maps/us-aea-en.js') }}"></script>
+            <script src="{{ asset('assets/js/maps/us-lcc-en.js') }}"></script>
+           <script src="{{ asset('assets/js/maps/us-mill-en.js') }}"></script>
+           <script src="{{ asset('assets/js/pages/custom-table.js') }}"></script>
+           <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+           <script src="{{ asset('assets/js/app.js') }}"></script>
+
+
+
+           
+
+
+
+
+
+
+
+     
+
+
+    <!-- Apex Charts js -->
+  
+
+    <!-- Vector Map Js -->
+  
+    
+    
+
+    <!-- Custom table -->
+    
+
+    <!-- Dashboard js -->
+    
+        
 
 
 

@@ -8,8 +8,8 @@
             </div>
   
             <!--  Show button only if user has menu_add permission for "users" -->
-            <div class="col text-end" v-if="Auth.hasPermission('menu_add')">
-              <router-link to="/addgroup">
+            <div class="col text-end" v-if="menuAccess.menu_add">
+              <router-link to="addgroup">
                 <button type="button" class="btn btn-success">+ Add user</button>
               </router-link>
             </div>
@@ -18,6 +18,7 @@
   
           </div>
         </div>
+      
   
         <div class="card-body pt-0">
           <div class="table-responsive">
@@ -66,14 +67,15 @@
   import { storeToRefs } from 'pinia';
   import { useRouter } from "vue-router";
   import Auth from '../../store/auth.js';
+  import { menustore } from "../../store/menus.js";
   
   const router = useRouter();
   
   //  Get menus from Auth store (backend after login)
-  const menus = Auth.getMenus();
+  // const menus = Auth.getMenus();
   
   // Access user data and pagination from Pinia store
-  const { getallusersmodel, duesmodelpgin } = storeToRefs(useMemberStores());
+  const { getallusersmodel, duesmodelpgin,menuAccess } = storeToRefs(useMemberStores());
   const { getallusers } = useMemberStores();
   
   //  Load all users on mount

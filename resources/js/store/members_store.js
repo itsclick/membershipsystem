@@ -1,6 +1,8 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 import router from "@/router"; // Correct global router import
+import { menustore } from "./menus";
+
 
 
 export const useMemberStores = defineStore("memberStore", {
@@ -29,11 +31,18 @@ export const useMemberStores = defineStore("memberStore", {
         saveloader: false,
         showErrro: false,
         Erromsg: "",
-        toastsuccess:''
+        toastsuccess:'',
+        menustore:menustore(),
+        
     }),
 
     // GETTERS
-    getters: {},
+    getters: {
+        menuAccess() { 
+            
+            return this.menustore.getAccess;
+        },
+    },
 
     // ACTIONS
     actions: {
@@ -91,10 +100,12 @@ async updatepermision(fromvalue){
           });
 
 
+    
+          this.menustore.usermenumain();
        
-
         // Redirect (CORRECT)
         router.push("/users");
+        
 
     } catch (err) {
         this.saveloader = false;

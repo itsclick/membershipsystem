@@ -23,6 +23,7 @@
   import axios from 'axios';
   import { useRouter } from 'vue-router';
   import Auth from '@/store/auth';
+ 
   
   const router = useRouter();
   
@@ -43,7 +44,7 @@
         Auth.login(
           response.data.access_token,
           response.data.user,
-          response.data.permissions
+          // response.data.permissions
         );
   
         // Redirect to dashboard

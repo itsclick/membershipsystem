@@ -78,6 +78,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
             Route::get('/getallmenus',[menusController::class,'getallmenus']);
             Route::post('/savemenus',[menusController::class,'savemenus']);
             Route::delete('/deletemenu/{id}',[menusController::class,'deletemenu']);
+            Route::get('/allpermision/{user_id}',[accountManager::class,'allpermision']);
             
 
 

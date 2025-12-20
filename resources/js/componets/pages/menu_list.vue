@@ -41,11 +41,11 @@
 
                        
                           
-                        
+                       
                         <i class="fas fa-trash fs-16 me-1" 
-                        :class="{ 'text-muted': !Auth.hasPermission('menu_delete') }" 
-                        :style="{ cursor: Auth.hasPermission('menu_delete') ? 'pointer' : 'not-allowed' }"
-                        @click="Auth.hasPermission('menu_delete') && deletemenubtn(m.id)" title="Delete"></i>
+                        :class="{ 'text-muted': !getAccess.menu_delete }" 
+                        :style="{ cursor: getAccess.menu_delete ? 'pointer' : 'not-allowed' }"
+                        @click="getAccess.menu_delete && deletemenubtn(m.id)" title="Delete"></i>
 
                   </td>
                 </tr>
@@ -77,6 +77,7 @@
   import { useMemberStores } from "../../store/members_store";
   import { storeToRefs } from 'pinia';
   import Auth from '../../store/auth.js';
+  import { menustore } from "../../store/menus.js";
   
 
 
@@ -86,6 +87,11 @@
 
   //functions below
   const { getallsysmenus, deletemenubtn  } = useMemberStores();
+
+ //varibale here
+  const { getAccess} = storeToRefs(menustore());
+
+
   
  
  
